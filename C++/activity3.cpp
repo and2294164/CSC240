@@ -4,13 +4,11 @@ using namespace std;
 
 class Grades {
     vector<int> record;
-    vector<int>::iterator iter;
 
     public:
     Grades(vector<int> v = {0}) {
         
         record = v;
-        iter = record.begin();
     } 
 
     
@@ -19,9 +17,10 @@ class Grades {
         record.push_back(x);
     }
 
+    // decided to have some fun and implemented an overload method
     void add(vector<int> v) {
 
-        for(iter = v.begin(); iter != v.end(); iter++) {
+        for(vector<int>::iterator iter = v.begin(); iter != v.end(); iter++) {
         
             record.push_back(*iter);
         }
@@ -31,7 +30,7 @@ class Grades {
 
         double total;
 
-        for(iter = record.begin(); iter != record.end(); iter++) {
+        for(vector<int>::iterator iter = record.begin(); iter != record.end(); iter++) {
 
             total += *iter;
             cout << "record[" << distance(record.begin(), iter) << "] = " << *iter << endl;
