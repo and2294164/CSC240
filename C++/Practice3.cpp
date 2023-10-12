@@ -13,21 +13,16 @@ NumberList::NumberList(int x = 1, vector<int> v = {1}) {
 
     } 
     else {
-        cout << "Error, max size is smaller than vector capacity" << endl;
+        cout << "Error, number of ints exceeds maximum size." << endl;
     }
 }
-NumberList::~NumberList() {
+NumberList::~NumberList() { }
 
-    num_list.clear();
-    //free(num_list); causes an error
-
-    cout << "NumberList deleted" << endl;
-}
 void NumberList::add(int x) { 
-    if( x >= (int) num_list.capacity() ) {
+    if( max >= (int) num_list.capacity() ) {
         num_list.push_back(x);
     } else {
-        cout << "Error, max size is smaller than vector capacity" << endl;
+        cout << "Error, number of ints exceeds maximum size." << endl;
     }
 }
 void NumberList::print() {
@@ -47,9 +42,26 @@ int main() {
     vector<int> v1{3,4,5,7};
     vector<int> v2{50, 60, 70};
 
+    cout << "numList1: " << endl;
     NumberList numList1(5, v1);
     numList1.print();
+    cout << endl;
+
+    cout << "numList2: " << endl;
     NumberList numList2(2, v2);
+    cout << endl;
+    
+    cout << "numList3: " << endl;
+    NumberList numList3(10, {2, 4, 6, 8, 10});
+    numList3.print();
+
+    cout << endl << "adding numbers to numList3" << endl;
+    numList3.add(1);
+    numList3.add(3);
+    numList3.add(5);
+    numList3.add(7);
+    numList3.add(9);
+    numList3.print();
 
     //cout << "v1.add" << endl;
     
