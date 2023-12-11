@@ -1,0 +1,21 @@
+% Write a Prolog program split(L, N, L1, L2) where L1 and L2 are the
+% result of splitting the list L after location N.
+
+split([], _I, [],[]) :- !.
+split(Lst, 0, [], Lst) :- !.
+split([H|T], I,[H|T1] , L2) :-
+    I > 0, !,
+    I1 is I - 1,
+    split(T, I1, T1, L2).
+
+
+addindex([],[]) :- !.
+addindex([H|T],[H|T1]) :-
+   addindex_helper(T,T1,1).
+
+addindex_helper([],[],_) :- !.
+addindex_helper([H|T],[H1,T1],I) :-
+    H1 is H + I,
+    I1 is I + 1,
+    addindex_helper(T,T1,I1).
+

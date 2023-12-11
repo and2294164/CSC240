@@ -2,18 +2,15 @@
 #include<stdlib.h>
 #include<string.h>
 
-int contains (char * str, char c);
-int * makearray(int n);
-
 /* Rewrite using a pointer to char str[] */
 void array_to_ptr () {
   int n = 0;
   char str[] = "Hello World!";
-  char* ptr = &str[0];
-  
-  while(*ptr != '\0') {
+  char *ptr = &str[0];
 
+  while(*ptr != '\0') {
     printf("%c", *ptr);
+    
     ptr++; n++;
   }
   printf("\nlength = %d\n", n);
@@ -21,39 +18,32 @@ void array_to_ptr () {
 
 int contains (char * str, char c) {
   
-  int x = 0;
-  while(*str != '\0') {
-
-    if (*str == c) x = 1;
+  while (*str != '\0') {
+    if((*str) == c) {
+      return 1;
+    }
     str++;
   }
-  return x;
+  return 0;
 }
 
 int * makearray(int n) {
-    int* ptr = (int*) malloc(n * sizeof(int));
+  int * ptr = calloc(n, sizeof(int));
+  for(int i = 1; i <= n; i++) {
+    *ptr = i;
+    ptr++;
+  }
+  for(int i = 1; i <=n; i++) {
+    ptr--;
+  }
 
-    for(int i = 1; i <= n; i++) {
-
-        *ptr = i;
-        ptr++;
-    }
-
-    for(int i = 1; i <= n; i++) {
-
-        ptr--;
-    }
-    return ptr;
+  return ptr;
 }
 
 int main (void) {
   printf("Question #2 - array_to_ptr:\n");
   array_to_ptr();   
   printf("\n------------------------------------\n\n");
-
-
-
-
 
   printf("Question #3 - contains:\n");
   printf("Test #1: ");
@@ -72,20 +62,12 @@ int main (void) {
   }
   printf("\n------------------------------------\n\n");
 
-
-
-  int qty = 5; 
-  int salesReps = 12;
-  double datatype =  (double) qty / (double) salesReps;
-
-  printf("\ndatatype=%f\n", datatype);
-
-
   printf("Question #4: - makearray:\n");
   int * arr = makearray(10);
   for (int ii=0;ii<10;ii++) {
     printf("%d ", *(arr+ii));
   }
+
   printf("\n");
   printf("\n------------------------------------\n\n");
   return 0;

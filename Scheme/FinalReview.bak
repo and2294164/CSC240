@@ -1,0 +1,23 @@
+#lang scheme
+(define a 10)
+(define b 5)
+(define c (+ a b))
+(define func
+  (lambda (c)
+    (if (= c 0)
+        '()
+        (cons c (func (- c 1))))))
+
+
+
+
+
+
+(define whereis
+  (lambda (i lst)
+
+    (cond
+      ( (empty? lst) '() )
+      ( (eq? x 0) (car lst) )
+      ( else (whereis (- x 1) (cdr lst)) )
+      )))

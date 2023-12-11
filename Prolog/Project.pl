@@ -1,0 +1,20 @@
+% 1. states/5 assigns 3 colors to 5 states, and doesn't assign the same
+% color to states that border each other.
+
+states(Tx,Ok,La,Ms,Ar) :-
+    member(Tx, [red,green,blue]),
+    member(Ok, [red,green,blue]),
+    member(La, [red,green,blue]),
+    member(Ms, [red,green,blue]),
+    member(Ar, [red,green,blue]),
+
+    Tx \= Ok, Tx \= Ar, Tx \= La,
+    Ar \= Ok, Ar \= La, Ar \= Ms,
+    Ms \= La.
+
+%
+
+:- states(TX,OK,LA,MS,AR),
+        write(['  states1:', 'TX', TX, ' OK', OK, ' LA', LA, ' MS', MS, ' AR', AR]), nl.
+:- states(TX,OK,LA,MS,AR), TX = blue,
+        write(['  states1:', 'TX', TX, ' OK', OK, ' LA', LA, ' MS', MS, ' AR', AR]), nl.

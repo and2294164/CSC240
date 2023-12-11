@@ -7,18 +7,20 @@ class DynamicArray {
     int* arr;
 
     public:
-    DynamicArray(int s) {
-        size = s;
-        arr = new int[s];
-        
+    DynamicArray(int n = 0) {
+        size = n;
+        arr = new int[n];
     }
-    
-    ~DynamicArray() { }
+    ~DynamicArray() {
+        delete[] arr;
+        arr = nullptr;
+    }
 
-    void fill_array(int num) {
-        
-        for(int i = 0; i < size; i++) {
-            arr[i] = num;
+    void fill_array(int n) {
+
+        for(int i = 0; i < n; i++) {
+            *(arr+i) = i+1;
+            
         }
     }
 
